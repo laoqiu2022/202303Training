@@ -14,8 +14,8 @@ if($inputForlder -ne ""){
     Get-ChildItem -Path $inputForlder | ForEach-Object -Process{
         if($_ -is [System.IO.FileInfo])
         {
-            Write-Host($_.CreationTime);
-            Write-Host($_.FullName);
+            #Write-Host($_.CreationTime);
+            #Write-Host($_.FullName);
 
             Rename-Item -Path $_.FullName `
             -NewName ($_.LastWriteTime.ToString('yyyyMMdd-HHmmss.fff') + '-' + $_.BaseName + $_.Extension)
@@ -25,5 +25,3 @@ if($inputForlder -ne ""){
 else{
     Write-Host("Forlder is empty.") -BackgroundColor Blue;
 }
-
-#Write-Host($_.FullName);
