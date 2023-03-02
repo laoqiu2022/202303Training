@@ -16,7 +16,7 @@ if($inputForlder -ne ""){
         if($_ -is [System.IO.FileInfo])
         {
             #Write-Host($_.CreationTime);
-            #Write-Host($_.FullName);
+            Write-Host($_.FullName);
             
             if (!($_.BaseName -match '^(\d{8}-\d{6}.\d{3}-)(.*)$')) {
                 Rename-Item -Path $_.FullName `
