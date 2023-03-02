@@ -10,18 +10,24 @@ if(![string]::IsNullorEmpty($args[0])){
     }
 }
 
+$count = 0;
 if($inputForlder -ne ""){
     Get-ChildItem -Path $inputForlder | ForEach-Object -Process{
         if($_ -is [System.IO.FileInfo])
         {
             #Write-Host($_.CreationTime);
             #Write-Host($_.FullName);
-
-            Rename-Item -Path $_.FullName `
-            -NewName ($_.LastWriteTime.ToString('yyyyMMdd-HHmmss.fff') + '-' + $_.BaseName + $_.Extension)
+            
+            if (!($_.BaseName -match '^(\d{8}-\d{6}.\d{3}-)(.*)$')) {
+                Rename-Item -Path $_.FullName `
+                -NewName ($_.LastWriteTime.ToString('yyyyMMdd-HHmmss.fff') + '-' + $_.BaseName + $_.Extension)
+                $count++
+            }            
         }
     }
 }
 else{
     Write-Host("Forlder is empty.") -BackgroundColor Blue;
 }
+
+Write-Host("Renamed $count files.") -BackgroundColor Blue;
