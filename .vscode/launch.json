@@ -9,7 +9,7 @@
             "type": "PowerShell",
             "request": "launch",
             "script": "${file}",
-            "args": ["D:\\04_IT培训\\2023年03月期\\20230304\\202303Training\\SampleFileOriginal2"]
+            "args": ["D:\\04_IT培训\\2023年03月期\\20230304\\202303Training\\SampleFileWork"]
         }
     ]
 }
